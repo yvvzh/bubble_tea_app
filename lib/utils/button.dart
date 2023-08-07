@@ -1,3 +1,4 @@
+import 'package:bubble_tea/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
@@ -12,8 +13,7 @@ class MyButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 255, 102, 102),
-            borderRadius: BorderRadius.circular(40)),
+            color: secondaryColor, borderRadius: BorderRadius.circular(40)),
         padding: const EdgeInsets.all(20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

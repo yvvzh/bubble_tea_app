@@ -1,3 +1,4 @@
+import 'package:bubble_tea/themes/colors.dart';
 import 'package:bubble_tea/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 22, 166, 182),
+      backgroundColor: mainColor,
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
