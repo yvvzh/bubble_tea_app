@@ -1,5 +1,7 @@
+import 'package:bubble_tea/models/tea.dart';
 import 'package:bubble_tea/themes/colors.dart';
 import 'package:bubble_tea/utils/button.dart';
+import 'package:bubble_tea/utils/drink_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +13,33 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  // menu des boissons
+  List drinkMenu = [
+    // pastèque
+    Tea(
+        name: "Watermelon",
+        price: "5,90",
+        imgPath: "lib/images/bt_red.png",
+        stars: "4.4"),
+    // framboise
+    Tea(
+        name: "Raspberry",
+        price: "6,90",
+        imgPath: "lib/images/bt_pink.png",
+        stars: "4.9"),
+    // mojito
+    Tea(
+        name: "Mojito",
+        price: "6,50",
+        imgPath: "lib/images/bt_green.png",
+        stars: "4.2"),
+    // café
+    Tea(
+        name: "Coffee",
+        price: "4,90",
+        imgPath: "lib/images/bt_coffee.png",
+        stars: "4.7"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,16 +57,18 @@ class _MenuPageState extends State<MenuPage> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: BoxDecoration(
                 color: mainColor, borderRadius: BorderRadius.circular(20)),
             margin: const EdgeInsets.symmetric(horizontal: 25),
-            padding: const EdgeInsets.all(25),
+            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // message promotionnel
                     Text(
@@ -61,12 +92,117 @@ class _MenuPageState extends State<MenuPage> {
                 )
               ],
             ),
-          )
+          ),
+
+          const SizedBox(height: 25),
+
           // searchbar
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: TextField(
+              decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20)),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20)),
+                  hintText: "Search here.."),
+            ),
+          ),
+
+          const SizedBox(height: 25),
 
           // liste des menus
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Text(
+              "Drinks Menu",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[800],
+                fontSize: 18,
+              ),
+            ),
+          ),
 
-          // choix fréquent
+          const SizedBox(height: 25),
+
+          Expanded(
+              child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: drinkMenu.length,
+            itemBuilder: (context, index) => DrinkTile(
+              tea: drinkMenu[index],
+            ),
+          )),
+
+          const SizedBox(height: 25),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Text(
+              "Most Popular Delicacy",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[800],
+                fontSize: 18,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 25),
+
+          // recommendations
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(20)),
+            margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    // image
+                    Image.asset(
+                      'lib/images/bt_pink.png',
+                      height: 60,
+                    ),
+
+                    const SizedBox(width: 20),
+
+                    // nom et prix
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // nom
+                        Text(
+                          "Raspberry",
+                          style: GoogleFonts.anton(fontSize: 18),
+                        ),
+                        const SizedBox(height: 10),
+
+                        // prix
+                        Text(
+                          '6,90€',
+                          style: TextStyle(color: Colors.grey[700]),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+
+                // coeur
+                const Icon(
+                  Icons.favorite_outline,
+                  color: Colors.grey,
+                  size: 28,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
