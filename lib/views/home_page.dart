@@ -53,9 +53,9 @@ class HomePage extends StatelessWidget {
             const Text(
               "''Feel the freshness from anywhere at anytime''",
               style: TextStyle(
-                  color: Color.fromARGB(255, 243, 243, 243),
-                  height: 2,
-                  fontStyle: FontStyle.italic),
+                color: Color.fromARGB(255, 243, 243, 243),
+                height: 2,
+              ),
             ),
             const SizedBox(
               height: 25,

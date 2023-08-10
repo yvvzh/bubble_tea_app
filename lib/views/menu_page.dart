@@ -2,6 +2,7 @@ import 'package:bubble_tea/models/tea.dart';
 import 'package:bubble_tea/themes/colors.dart';
 import 'package:bubble_tea/utils/button.dart';
 import 'package:bubble_tea/utils/drink_tile.dart';
+import 'package:bubble_tea/views/tea_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,12 +22,6 @@ class _MenuPageState extends State<MenuPage> {
         price: "5,90",
         imgPath: "lib/images/bt_red.png",
         stars: "4.4"),
-    // framboise
-    Tea(
-        name: "Raspberry",
-        price: "6,90",
-        imgPath: "lib/images/bt_pink.png",
-        stars: "4.9"),
     // mojito
     Tea(
         name: "Mojito",
@@ -39,7 +34,26 @@ class _MenuPageState extends State<MenuPage> {
         price: "4,90",
         imgPath: "lib/images/bt_coffee.png",
         stars: "4.7"),
+    // framboise
+    Tea(
+        name: "Raspberry",
+        price: "6,90",
+        imgPath: "lib/images/bt_pink.png",
+        stars: "4.9"),
   ];
+
+  // onTap naviguer vers la page de détails du tea
+  void navigateToTeaDetails(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TeaDetailsPage(
+          tea: drinkMenu[index],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,6 +148,7 @@ class _MenuPageState extends State<MenuPage> {
             itemCount: drinkMenu.length,
             itemBuilder: (context, index) => DrinkTile(
               tea: drinkMenu[index],
+              onTap: () => navigateToTeaDetails(index),
             ),
           )),
 
