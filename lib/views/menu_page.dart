@@ -1,10 +1,11 @@
-import 'package:bubble_tea/models/tea.dart';
+import 'package:bubble_tea/models/shop.dart';
 import 'package:bubble_tea/themes/colors.dart';
 import 'package:bubble_tea/utils/button.dart';
 import 'package:bubble_tea/utils/drink_tile.dart';
 import 'package:bubble_tea/views/tea_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -14,36 +15,11 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  // menu des boissons
-  List drinkMenu = [
-    // pastèque
-    Tea(
-        name: "Watermelon",
-        price: "5,90",
-        imgPath: "lib/images/bt_red.png",
-        stars: "4.4"),
-    // mojito
-    Tea(
-        name: "Mojito",
-        price: "6,50",
-        imgPath: "lib/images/bt_green.png",
-        stars: "4.2"),
-    // café
-    Tea(
-        name: "Coffee",
-        price: "4,90",
-        imgPath: "lib/images/bt_coffee.png",
-        stars: "4.7"),
-    // framboise
-    Tea(
-        name: "Raspberry",
-        price: "6,90",
-        imgPath: "lib/images/bt_pink.png",
-        stars: "4.9"),
-  ];
-
   // onTap naviguer vers la page de détails du tea
   void navigateToTeaDetails(int index) {
+    // récupérer le shop et son menu
+    final shop = context.read<Shop>();
+    final drinkMenu = shop.drinkMenu;
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -56,19 +32,29 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
+    // récupérer le shop et son menu
+    final shop = context.read<Shop>();
+    final drinkMenu = shop.drinkMenu;
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.grey[900],
         elevation: 0,
-        leading: Icon(
+        leading: const Icon(
           Icons.menu,
-          color: Colors.grey[900],
         ),
-        title: Text(
-          'Bubble Tea',
-          style: TextStyle(color: Colors.grey[900]),
-        ),
+        title: const Text('Bubble Tea'),
+        actions: [
+          // bouton panier
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/cartpage');
+              },
+              icon: const Icon(
+                Icons.shopping_cart,
+              ))
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

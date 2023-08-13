@@ -1,8 +1,10 @@
+import 'package:bubble_tea/models/shop.dart';
 import 'package:bubble_tea/models/tea.dart';
 import 'package:bubble_tea/themes/colors.dart';
 import 'package:bubble_tea/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TeaDetailsPage extends StatefulWidget {
   final Tea tea;
@@ -33,7 +35,44 @@ class _TeaDetailsPageState extends State<TeaDetailsPage> {
   }
 
   // ajouter au panier
-  void addToCart() {}
+  void addToCart() {
+    if (qtyCount > 0) {
+      // accès au shop
+      final shop = context.read<Shop>();
+
+      // ajout au cart
+      shop.addToCart(widget.tea, qtyCount);
+
+      // notifier l'utilisateur
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          backgroundColor: mainColor,
+          content: Text(
+            "Successfully added to cart!",
+            style: GoogleFonts.anton(color: Colors.white, fontSize: 18),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            // bouton ok
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.done,
+                color: Colors.white,
+              ),
+            ),
+
+            // bouton annuler
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

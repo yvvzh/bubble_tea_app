@@ -1,10 +1,18 @@
+import 'package:bubble_tea/models/shop.dart';
+import 'package:bubble_tea/views/cart_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'views/home_page.dart';
 import 'views/menu_page.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Shop(),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -18,6 +26,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/homepage': (context) => const HomePage(),
         '/menupage': (context) => const MenuPage(),
+        '/cartpage': (context) => const CartPage(),
       },
     );
   }
