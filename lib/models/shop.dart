@@ -7,25 +7,25 @@ class Shop extends ChangeNotifier {
     Tea(
         name: "Watermelon",
         price: "5,90",
-        imgPath: "lib/images/bt_red.png",
+        imgPath: "lib/assets/images/bt_red.png",
         stars: "4.4"),
     // mojito
     Tea(
         name: "Mojito",
         price: "6,50",
-        imgPath: "lib/images/bt_green.png",
+        imgPath: "lib/assets/images/bt_green.png",
         stars: "4.2"),
     // café
     Tea(
         name: "Coffee",
         price: "4,90",
-        imgPath: "lib/images/bt_coffee.png",
+        imgPath: "lib/assets/images/bt_coffee.png",
         stars: "4.7"),
     // framboise
     Tea(
         name: "Raspberry",
         price: "6,90",
-        imgPath: "lib/images/bt_pink.png",
+        imgPath: "lib/assets/images/bt_pink.png",
         stars: "4.9"),
   ];
 

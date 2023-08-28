@@ -1,5 +1,6 @@
 import 'package:bubble_tea/themes/colors.dart';
-import 'package:bubble_tea/utils/button.dart';
+import 'package:bubble_tea/views/menu_page.dart';
+import 'package:bubble_tea/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
             // logo de la boutique
             Padding(
               padding: const EdgeInsets.all(50.0),
-              child: Image.asset('lib/images/bt_main.png'),
+              child: Image.asset('lib/assets/images/bt_main.png'),
             ),
             const SizedBox(
               height: 25,
@@ -65,7 +66,8 @@ class HomePage extends StatelessWidget {
               text: "Let's Drink !",
               onTap: () {
                 // aller vers le menu
-                Navigator.pushNamed(context, '/menupage');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MenuPage()));
               },
             ),
           ],

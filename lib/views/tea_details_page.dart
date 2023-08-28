@@ -1,7 +1,7 @@
 import 'package:bubble_tea/models/shop.dart';
 import 'package:bubble_tea/models/tea.dart';
 import 'package:bubble_tea/themes/colors.dart';
-import 'package:bubble_tea/utils/button.dart';
+import 'package:bubble_tea/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

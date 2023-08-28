@@ -1,7 +1,8 @@
 import 'package:bubble_tea/models/shop.dart';
 import 'package:bubble_tea/themes/colors.dart';
-import 'package:bubble_tea/utils/button.dart';
-import 'package:bubble_tea/utils/drink_tile.dart';
+import 'package:bubble_tea/views/cart_page.dart';
+import 'package:bubble_tea/widgets/button.dart';
+import 'package:bubble_tea/widgets/drink_tile.dart';
 import 'package:bubble_tea/views/tea_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,7 +50,9 @@ class _MenuPageState extends State<MenuPage> {
           // bouton panier
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/cartpage');
+                //Navigator.pushNamed(context, '/cartpage');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const CartPage()));
               },
               icon: const Icon(
                 Icons.shopping_cart,
@@ -87,7 +90,7 @@ class _MenuPageState extends State<MenuPage> {
                 ),
                 // image
                 Image.asset(
-                  'lib/images/bt_main.png',
+                  'lib/assets/images/bt_main.png',
                   height: 100,
                 )
               ],
@@ -159,7 +162,7 @@ class _MenuPageState extends State<MenuPage> {
             decoration: BoxDecoration(
                 color: Colors.grey[100],
                 borderRadius: BorderRadius.circular(20)),
-            margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+            margin: const EdgeInsets.only(left: 25, right: 25, bottom: 45),
             padding: const EdgeInsets.all(20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -168,7 +171,7 @@ class _MenuPageState extends State<MenuPage> {
                   children: [
                     // image
                     Image.asset(
-                      'lib/images/bt_pink.png',
+                      'lib/assets/images/bt_pink.png',
                       height: 60,
                     ),
 
