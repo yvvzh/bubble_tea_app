@@ -166,8 +166,8 @@ class _TeaDetailsPageState extends State<TeaDetailsPage> {
                   children: [
                     // prix
                     Text(
-                      widget.tea.price + '€',
-                      style: TextStyle(
+                      '${widget.tea.price}€',
+                      style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18),
@@ -195,7 +195,7 @@ class _TeaDetailsPageState extends State<TeaDetailsPage> {
                           child: Center(
                             child: Text(
                               qtyCount.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

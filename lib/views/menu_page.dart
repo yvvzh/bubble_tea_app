@@ -50,7 +50,6 @@ class _MenuPageState extends State<MenuPage> {
           // bouton panier
           IconButton(
               onPressed: () {
-                //Navigator.pushNamed(context, '/cartpage');
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const CartPage()));
               },
@@ -61,6 +60,7 @@ class _MenuPageState extends State<MenuPage> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -132,14 +132,15 @@ class _MenuPageState extends State<MenuPage> {
           const SizedBox(height: 25),
 
           Expanded(
-              child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: drinkMenu.length,
-            itemBuilder: (context, index) => DrinkTile(
-              tea: drinkMenu[index],
-              onTap: () => navigateToTeaDetails(index),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: drinkMenu.length,
+              itemBuilder: (context, index) => DrinkTile(
+                tea: drinkMenu[index],
+                onTap: () => navigateToTeaDetails(index),
+              ),
             ),
-          )),
+          ),
 
           const SizedBox(height: 25),
 
