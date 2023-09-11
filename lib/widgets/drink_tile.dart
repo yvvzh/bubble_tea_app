@@ -19,7 +19,7 @@ class DrinkTile extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               // image

@@ -105,10 +105,10 @@ class _MenuPageState extends State<MenuPage> {
             child: TextField(
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(20)),
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(20)),
                   hintText: "Search here.."),
             ),
