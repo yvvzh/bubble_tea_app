@@ -40,7 +40,7 @@ class DrinkTile extends StatelessWidget {
                   children: [
                     // prix
                     Text(
-                      tea.price + '€',
+                      '${tea.price}€',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.grey[700]),
                     ),

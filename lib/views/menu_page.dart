@@ -31,21 +31,39 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 
+  // favorite button
+  var _favoriteIcon = const Icon(Icons.favorite_outline_rounded);
+  var _favIconColor = Colors.grey;
+  bool _favIconStatus = false;
+
+  // drawer settings
+  int _drawerIndex = 0;
+  Color? _currentMode = lightMode;
+
+  // onTap drawer
+  void _onItemTapped(int index) {
+    setState(() {
+      _drawerIndex = index;
+      if (_currentMode == lightMode) {
+        _currentMode = nightMode;
+      } else {
+        _currentMode = lightMode;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // récupérer le shop et son menu
     final shop = context.read<Shop>();
     final drinkMenu = shop.drinkMenu;
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: _currentMode,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.grey[900],
         elevation: 0,
-        leading: const Icon(
-          Icons.menu,
-        ),
-        title: const Text('Bubble Tea'),
+        title: const Text("BOB'BLES"),
         actions: [
           // bouton panier
           IconButton(
@@ -57,6 +75,36 @@ class _MenuPageState extends State<MenuPage> {
                 Icons.shopping_cart,
               ))
         ],
+      ),
+      drawer: Drawer(
+        backgroundColor: mainColor,
+        width: 200,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: secondaryColor,
+              ),
+              child: Center(
+                  child: Text(
+                'Settings',
+                style: TextStyle(color: textColor),
+              )),
+            ),
+            ListTile(
+              title: Text(
+                'Nightmode',
+                style: TextStyle(color: textColor),
+              ),
+              selected: _drawerIndex == 0,
+              onTap: () {
+                _onItemTapped(0);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,9 +123,9 @@ class _MenuPageState extends State<MenuPage> {
                   children: [
                     // message promotionnel
                     Text(
-                      'Earn 15% Discount',
+                      'Earn 15% Discount !!!',
                       style: GoogleFonts.anton(
-                        fontSize: 20,
+                        fontSize: 18,
                         color: Colors.white,
                       ),
                     ),
@@ -91,7 +139,7 @@ class _MenuPageState extends State<MenuPage> {
                 // image
                 Image.asset(
                   'lib/assets/images/bt_main.png',
-                  height: 100,
+                  height: 120,
                 )
               ],
             ),
@@ -161,8 +209,7 @@ class _MenuPageState extends State<MenuPage> {
           // recommendations
           Container(
             decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(20)),
+                color: _currentMode, borderRadius: BorderRadius.circular(20)),
             margin: const EdgeInsets.only(left: 25, right: 25, bottom: 45),
             padding: const EdgeInsets.all(20),
             child: Row(
@@ -200,10 +247,22 @@ class _MenuPageState extends State<MenuPage> {
                 ),
 
                 // coeur
-                const Icon(
-                  Icons.favorite_outline,
-                  color: Colors.grey,
-                  size: 28,
+                IconButton(
+                  color: _favIconColor,
+                  iconSize: 28,
+                  onPressed: () {
+                    if (_favIconStatus == false) {
+                      _favoriteIcon = const Icon(Icons.favorite_rounded);
+                      _favIconColor = Colors.red;
+                      _favIconStatus = true;
+                    } else {
+                      _favoriteIcon =
+                          const Icon(Icons.favorite_outline_rounded);
+                      _favIconColor = Colors.grey;
+                      _favIconStatus = false;
+                    }
+                  },
+                  icon: _favoriteIcon,
                 ),
               ],
             ),

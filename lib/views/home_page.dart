@@ -18,18 +18,24 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const SizedBox(
-              height: 25,
+              height: 50,
             ),
             // nom de la boutique
-            Text(
-              "BUBBLE TEA",
-              style: GoogleFonts.anton(
-                fontSize: 28,
-                color: Colors.white,
+            Center(
+              child: Text(
+                "BOB'BLES",
+                style: GoogleFonts.anton(
+                  fontSize: 30,
+                  color: textColor,
+                ),
               ),
             ),
-            const SizedBox(
-              height: 25,
+            // sous titre nom boutique
+            Center(
+              child: Text(
+                "World's best bubble teas",
+                style: TextStyle(color: textColor),
+              ),
             ),
             // logo de la boutique
             Padding(
@@ -44,7 +50,7 @@ class HomePage extends StatelessWidget {
               "WHEN POPPING TRIGGERS HAPPINESS",
               style: GoogleFonts.anton(
                 fontSize: 44,
-                color: Colors.white,
+                color: textColor,
               ),
             ),
             const SizedBox(

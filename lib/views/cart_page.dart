@@ -23,9 +23,12 @@ class CartPage extends StatelessWidget {
       builder: (context, value, child) => Scaffold(
         backgroundColor: mainColor,
         appBar: AppBar(
-          title: const Text("My Cart"),
+          title: Text(
+            "MY CART",
+            style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
+          ),
           backgroundColor: mainColor,
-          elevation: 0,
+          elevation: 1,
         ),
         body: Column(
           children: [
@@ -58,7 +61,7 @@ class CartPage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        teaPrice,
+                        "$teaPrice€",
                         style: TextStyle(
                           color: Colors.grey[200],
                           fontWeight: FontWeight.bold,
